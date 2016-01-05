@@ -18,11 +18,17 @@ namespace Vacabulary
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/libs/bootstrap.js",
-                      "~/Scripts/libs/respond.js"));
+                      "~/Scripts/libs/respond.js",
+                      "~/Scripts/libs/fileinput/fileinput.js",
+                      "~/Scripts/libs/bootstrap-filestyle.js",
+                      "~/Scripts/libs/angular.js",
+                      "~/Scripts/libs/angular-ui-router.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/libs/bootstrap.css",
-                      "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/styles").Include(
+                      "~/Content/css/site.css",
+                      "~/Content/css/libs/bootstrap.css",
+                      "~/Content/css/libs/fileinput.css"
+                      ));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862

@@ -1,0 +1,93 @@
+﻿@using Newtonsoft.Json
+@using Vacabulary.Models
+
+@{
+    ViewBag.Title = "Dictionary";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6 col-lg-offset-3 uploadBlock">
+            <form enctype="multipart/form-data" class="form-horizontal" role="form" action="~/api/Dictionary/PostFile" method="POST">
+                <div class="form-group">
+                    <label for="fromLang" class="control-label col-sm-4">From Language:</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" disabled id="fromLang">
+                            <option selected value="En">En</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="toLang" class="control-label col-sm-4">To Language:</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" disabled id="toLang">
+                            <option selected value="Ru">Ru</option>
+                        </select>
+                    </div>
+                </div>
+                <input id="fileToTranslate" name="haha" type="file">
+                <br>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 hidden-xs">Source Words</div>
+        <div class="col-sm-6 hidden-xs">Their Translations</div>
+        <div class="row" id="translations">
+            
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            var translations = $("#translations");
+            translations.addTranslation = function(word, translation) {
+                translations.append("<div class='col-sm-6'>" + word + "</div>"
+                    + "<div class='col-sm-6'>" + translation + "</div>");
+            };
+            translations.clear = function() {
+                translations.html("");
+            };
+
+
+            $("#fileToTranslate").fileinput({
+                uploadUrl: '/api/Dictionary/PostFile',
+                allowedFileExtensions: JSON.parse('@(Html.Raw(JsonConvert.SerializeObject(Subtitles.SupportedFileExtensions)))'),
+                maxFileSize: 10000,
+                maxFilesNum: 1,
+                minFilesNum: 1,
+                ajaxSettings: {
+                    success: function(resp) {
+                        translations.clear();
+                        for (var index = 0; index < resp.WordTranslations.length; index++) {
+                            var translation = resp.WordTranslations[index];
+                            translations.addTranslation(translation.SourceWord, translation.DestWord);
+                        };
+                    },
+                    complete: function() {
+                        alert("complete");
+                    },
+                    error: function (resp) {
+                        alert("error");
+                    }
+                },
+                uploadExtraData: function() {
+                    return {
+                        fromLang: fromLangSelect.val(),
+                        toLang: toLangSelect.val()
+                    };
+                }
+                //showUpload: false
+                //overwriteinitial: false
+            });
+
+            var fromLangSelect = $("#fromLang"),
+                toLangSelect = $("#toLang");
+        });
+    </script>
+}
+
+
+

@@ -115,32 +115,77 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\DictionaryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\SubtitleFileTypes.cs" />
+    <Compile Include="Models\TranslationResult.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Subtitles.cs" />
+    <Compile Include="Models\WordTranslation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\libs\bootstrap.css" />
-    <Content Include="Content\libs\bootstrap.min.css" />
+    <Content Include="Content\img\loading-sm.gif" />
+    <Content Include="Content\img\loading.gif" />
+    <Content Include="Content\css\libs\bootstrap.css" />
+    <Content Include="Content\css\libs\bootstrap.min.css" />
+    <Content Include="Content\css\libs\fileinput.css" />
+    <Content Include="Content\css\libs\fileinput.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\libs\angular-ui-router.js" />
+    <Content Include="Scripts\libs\angular-ui-router.min.js" />
+    <Content Include="Scripts\libs\angular.js" />
+    <Content Include="Scripts\libs\bootstrap-filestyle.js" />
+    <Content Include="Scripts\libs\bootstrap-filestyle.min.js" />
     <Content Include="Scripts\libs\bootstrap.js" />
     <Content Include="Scripts\libs\bootstrap.min.js" />
     <None Include=".bin\bower.cmd" />
     <None Include=".bin\git.cmd" />
     <None Include=".bin\node.cmd" />
     <None Include="Scripts\libs\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput.min.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_ar.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_bg.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_ca.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_cr.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_cz.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_da.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_de.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_el.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_es.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_fa.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_fr.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_hu.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_id.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_it.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_ja.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_LANG.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_nl.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_pl.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_pt-BR.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_pt.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_ro.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_ru.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_sk.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_th.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_tr.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_uk.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_zh-TW.js" />
+    <Content Include="Scripts\libs\fileinput\fileinput_locale_zh.js" />
+    <Content Include="Scripts\libs\fileinput\plugins\canvas-to-blob.js" />
+    <Content Include="Scripts\libs\fileinput\plugins\canvas-to-blob.min.js" />
     <Content Include="Scripts\libs\jquery-1.10.2.js" />
     <Content Include="Scripts\libs\jquery-1.10.2.min.js" />
     <Content Include="Scripts\libs\modernizr-2.6.2.js" />
@@ -153,7 +198,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\css\Site.css" />
     <Content Include="Scripts\libs\_references.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -161,6 +206,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\libs\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\LearnBootstrap.cshtml" />
+    <Content Include="Views\Home\Dictionary.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -187,7 +234,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>5749</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:5709/</IISUrl>
+          <IISUrl>http://localhost:5710/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
